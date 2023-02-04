@@ -1,3 +1,12 @@
+//
+//  OnboardingViewController.swift
+//  RoomObjectReplicatorDemo
+//
+//  Created by Gauthier Bocquet on 15/01/2023.
+//
+
+import Foundation
+
 /*
 See LICENSE folder for this sample’s licensing information.
 
