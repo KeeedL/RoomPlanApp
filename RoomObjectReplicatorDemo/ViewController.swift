@@ -168,7 +168,7 @@ extension ViewController: RoomCaptureSessionDelegate {
   }
 
   @IBAction func exportResults(_ sender: UIButton) {
-    let destinationURL = FileManager.default.temporaryDirectory.appending(path: "Room.usdz")home staging
+    let destinationURL = FileManager.default.temporaryDirectory.appending(path: "Room.usdz")
     do {
       try finalResults?.export(to: destinationURL)
 
@@ -217,9 +217,14 @@ extension ViewController: ARSessionDelegate {
       print("ARSessionDelegate log...")
     arView.scene.addRoomObjectEntities(for: anchors)
       
-      //for anchor in arView.scene.anchors {
-       //   arView.scene.removeAnchor(anchor)
-      //}
+      for anchor in anchors {
+          arView.session.remove(anchor: anchor)
+      }
+      
+      for anchor in arView.scene.anchors {
+          arView.scene.removeAnchor(anchor)
+      }
+      
     
       print("ARSessionDelegate log, count ARAnchor size : ", anchors.count)
       print("ARSessionDelegate log, arView.scene.anchors.count size : ", arView.scene.anchors.count)
