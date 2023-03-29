@@ -9,6 +9,8 @@ import ARKit
 import RealityKit
 import RoomPlan
 import UIKit
+import SwiftUI
+import Combine
 
 class ViewController: UIViewController, RoomCaptureViewDelegate {
     
@@ -16,11 +18,14 @@ class ViewController: UIViewController, RoomCaptureViewDelegate {
   @IBOutlet var arView: ARView!
     
     var anchorList: [ARAnchor] = []
+    
+    var contentViewContainer: UIView!
+
 
   //var captureSession: RoomCaptureSession?
   var replicator = RoomObjectReplicator()
-    var test = 0
 
+  @IBOutlet var importButton: UIBarButtonItem? // import virtual object
   @IBOutlet var exportButton: UIButton?
   @IBOutlet var doneButton: UIBarButtonItem?
   @IBOutlet var cancelButton: UIBarButtonItem?
@@ -73,17 +78,27 @@ extension ViewController: RoomCaptureSessionDelegate {
       roomCaptureView.delegate = self
       roomCaptureView.captureSession.delegate = self
       
+      // Create and add ContentView Container
+      
+      contentViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+      arView.addSubview(contentViewContainer)
+       
+      
       let containerView = UIView()
       containerView.translatesAutoresizingMaskIntoConstraints = false
       containerView.addSubview(roomCaptureView)
       arView.addSubview(containerView)
-      //arView.bringSubviewToFront(containerView)
+      arView.bringSubviewToFront(containerView)
 
       NSLayoutConstraint.activate([
       containerView.topAnchor.constraint(equalTo: arView.topAnchor),
       containerView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
       containerView.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
       containerView.bottomAnchor.constraint(equalTo: arView.bottomAnchor),
+      contentViewContainer.topAnchor.constraint(equalTo: containerView.topAnchor),
+      contentViewContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+      contentViewContainer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+      contentViewContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
       roomCaptureView.topAnchor.constraint(equalTo: containerView.topAnchor),
       roomCaptureView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
       roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
@@ -158,6 +173,23 @@ extension ViewController: RoomCaptureSessionDelegate {
 
     setCompleteNavBar()
   }
+    
+    @IBAction func importButton(_ sender: UIBarButtonItem) {
+        print("Import button log");
+        
+        // Other view :
+        let modelContentView = ModelContentView()
+        present(UIHostingController(rootView: modelContentView), animated: true)
+        
+        // intregated view :
+        /*let modelContentView = ModelContentView()
+                let hostingController = UIHostingController(rootView: modelContentView)
+                addChild(hostingController)
+                hostingController.view.frame = contentViewContainer.bounds
+                contentViewContainer.addSubview(hostingController.view)
+                hostingController.didMove(toParent: self)
+         */
+    }
 
   @IBAction func doneScanning(_ sender: UIBarButtonItem) {
     if isScanning { stopSession() } else { cancelScanning(sender) }
@@ -191,6 +223,7 @@ extension ViewController: RoomCaptureSessionDelegate {
       animations: {
         self.cancelButton?.tintColor = .white
         self.doneButton?.tintColor = .white
+          self.importButton?.tintColor = .white
         self.exportButton?.alpha = 0.0
       },
       completion: { complete in
@@ -203,6 +236,7 @@ extension ViewController: RoomCaptureSessionDelegate {
     UIView.animate(withDuration: 1.0) {
       self.cancelButton?.tintColor = .systemBlue
       self.doneButton?.tintColor = .systemBlue
+        self.importButton?.tintColor = .systemBlue
       self.doneButton?.title = "Done"
       self.exportButton?.alpha = 1.0
     }
@@ -217,7 +251,8 @@ extension ViewController: ARSessionDelegate {
       print("ARSessionDelegate log...")
     arView.scene.addRoomObjectEntities(for: anchors)
       
-      for anchor in anchors {
+      /*
+       for anchor in anchors {
           arView.session.remove(anchor: anchor)
       }
       
@@ -228,6 +263,7 @@ extension ViewController: ARSessionDelegate {
     
       print("ARSessionDelegate log, count ARAnchor size : ", anchors.count)
       print("ARSessionDelegate log, arView.scene.anchors.count size : ", arView.scene.anchors.count)
+       */
       
   }
 

@@ -74,11 +74,18 @@ You can see a preview of your scan at the bottom of the screen so you can make s
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </arView>
                     <navigationItem key="navigationItem" id="wo6-zb-Y3e">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="gqL-fm-Q95">
-                            <connections>
-                                <action selector="cancelScanning:" destination="BYZ-38-t0r" id="c3J-LS-bwr"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Cancel" id="gqL-fm-Q95">
+                                <connections>
+                                    <action selector="cancelScanning:" destination="BYZ-38-t0r" id="c3J-LS-bwr"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Import" id="YeT-De-PSp" userLabel="Import Button">
+                                <connections>
+                                    <action selector="importButton:" destination="BYZ-38-t0r" id="WIL-Z9-iDe"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="8XX-aF-xH3">
                             <connections>
                                 <action selector="doneScanning:" destination="BYZ-38-t0r" id="5DC-Cr-dy2"/>
@@ -89,6 +96,7 @@ You can see a preview of your scan at the bottom of the screen so you can make s
                         <outlet property="arView" destination="8bC-Xf-vdC" id="TPV-4x-avp"/>
                         <outlet property="cancelButton" destination="gqL-fm-Q95" id="Tnz-QY-cZv"/>
                         <outlet property="doneButton" destination="8XX-aF-xH3" id="fOD-7a-eAx"/>
+                        <outlet property="importButton" destination="YeT-De-PSp" id="LRO-cq-pPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
