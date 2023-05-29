@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  RoomObjectReplicatorDemo
 //
-//  Created by Jack Mousseau on 6/7/22.
+//  Created by Gauthier Bocquet
 //
 
 import ARKit
@@ -16,13 +16,10 @@ class ViewController: UIViewController, RoomCaptureViewDelegate {
     
 
   @IBOutlet var arView: ARView!
-    
-    var anchorList: [ARAnchor] = []
-    
-    var contentViewContainer: UIView!
+    let parentView = UIView()
+    var hostingController: UIHostingController<ModelContentView>?
+    //var containerView = ARSCNView()
 
-
-  //var captureSession: RoomCaptureSession?
   var replicator = RoomObjectReplicator()
 
   @IBOutlet var importButton: UIBarButtonItem? // import virtual object
@@ -30,7 +27,7 @@ class ViewController: UIViewController, RoomCaptureViewDelegate {
   @IBOutlet var doneButton: UIBarButtonItem?
   @IBOutlet var cancelButton: UIBarButtonItem?
 
-    var containerView = ARSCNView()
+    
     private var roomCaptureView: RoomCaptureView!
   private var isScanning: Bool = false
   private var roomCaptureSessionConfig: RoomCaptureSession.Configuration =
@@ -73,53 +70,19 @@ extension ViewController: RoomCaptureSessionDelegate {
       arView.alpha = 1
       
       roomCaptureView = RoomCaptureView(frame: view.bounds)
+      //roomCaptureView.translatesAutoresizingMaskIntoConstraints = false
       roomCaptureView.layoutSubviews()
       roomCaptureView.alpha = 0.7
       roomCaptureView.delegate = self
       roomCaptureView.captureSession.delegate = self
       
       // Create and add ContentView Container
-      
-      contentViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-      arView.addSubview(contentViewContainer)
-       
-      
       let containerView = UIView()
-      containerView.translatesAutoresizingMaskIntoConstraints = false
+      //containerView.translatesAutoresizingMaskIntoConstraints = false
       containerView.addSubview(roomCaptureView)
       arView.addSubview(containerView)
-      arView.bringSubviewToFront(containerView)
-
-      NSLayoutConstraint.activate([
-      containerView.topAnchor.constraint(equalTo: arView.topAnchor),
-      containerView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
-      containerView.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
-      containerView.bottomAnchor.constraint(equalTo: arView.bottomAnchor),
-      contentViewContainer.topAnchor.constraint(equalTo: containerView.topAnchor),
-      contentViewContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      contentViewContainer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      contentViewContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-      roomCaptureView.topAnchor.constraint(equalTo: containerView.topAnchor),
-      roomCaptureView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-      ])
       
       /*
-      // add room capture view as subview to container view
-      containerView.addSubview(roomCaptureView)
-
-
-      // add container view as subview to arView
-      arView.addSubview(containerView)
-      arView.bringSubviewToFront(containerView)
-      //arView.sendSubviewToBack(containerView)
-      //arView.insertSubview(containerView, at: self.arView.subviews.count-1)
-
-      // set up constraints
-      roomCaptureView.translatesAutoresizingMaskIntoConstraints = false
-      containerView.translatesAutoresizingMaskIntoConstraints = false
-
       NSLayoutConstraint.activate([
           containerView.topAnchor.constraint(equalTo: arView.topAnchor),
           containerView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
@@ -130,25 +93,39 @@ extension ViewController: RoomCaptureSessionDelegate {
           roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
           roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
       ])
-
        */
-              // start room capture session
-      startSession()
       
-      //roomCaptureView.captureSession
-      
+      //parentView.translatesAutoresizingMaskIntoConstraints = false
+      arView.addSubview(parentView)
+        
       /*
-      roomCaptureView = RoomCaptureView(frame: view.bounds)
-      roomCaptureView.captureSession.delegate = self
-      roomCaptureView.delegate = self
-      
-      arView.addSubview(self.roomCaptureView)
+        NSLayoutConstraint.activate([
+            parentView.topAnchor.constraint(equalTo: arView.topAnchor),
+            parentView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
+            parentView.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
+            parentView.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
+        ])
        */
-      //arView.view
-
-
-    //captureSession = RoomCaptureSession()
-    //captureSession?.delegate = self
+        
+        //...
+        
+        parentView.addSubview(containerView)
+        
+      /*
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: parentView.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor),
+            roomCaptureView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            roomCaptureView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+       */
+     
+      // start room capture session
+      startSession()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -175,21 +152,26 @@ extension ViewController: RoomCaptureSessionDelegate {
   }
     
     @IBAction func importButton(_ sender: UIBarButtonItem) {
-        print("Import button log");
-        
-        // Other view :
-        let modelContentView = ModelContentView()
-        present(UIHostingController(rootView: modelContentView), animated: true)
-        
-        // intregated view :
-        /*let modelContentView = ModelContentView()
-                let hostingController = UIHostingController(rootView: modelContentView)
-                addChild(hostingController)
-                hostingController.view.frame = contentViewContainer.bounds
-                contentViewContainer.addSubview(hostingController.view)
-                hostingController.didMove(toParent: self)
-         */
-    }
+            print("Import button log")
+
+            let modelContentView = ModelContentView(arView: arView)
+            hostingController = UIHostingController(rootView: modelContentView)
+            
+            if let hostView = hostingController?.view {
+                parentView.addSubview(hostView)
+                
+                // Activate constraints...
+                /*
+                NSLayoutConstraint.activate([
+                        host.view.topAnchor.constraint(equalTo: arView.topAnchor),
+                        host.view.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
+                        host.view.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
+                        host.view.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
+                    ])*/
+            }
+        }
+    
+
 
   @IBAction func doneScanning(_ sender: UIBarButtonItem) {
     if isScanning { stopSession() } else { cancelScanning(sender) }
@@ -248,7 +230,7 @@ extension ViewController: ARSessionDelegate {
     
     
   func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-      print("ARSessionDelegate log...")
+    print("ARSessionDelegate add anchor log...")
     arView.scene.addRoomObjectEntities(for: anchors)
       
       /*
@@ -268,6 +250,7 @@ extension ViewController: ARSessionDelegate {
   }
 
   func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+    print("ARSessionDelegate update anchor log...")
     arView.scene.updateRoomObjectEntities(for: anchors)
   }
 

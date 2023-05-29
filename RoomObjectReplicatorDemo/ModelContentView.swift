@@ -24,6 +24,7 @@ SOFTWARE.
 // Description: Pick a model from a variety of 3D content and place it in your physical space.
 
 
+
 import RealityKit
 import ARKit
 import UIKit
@@ -33,10 +34,16 @@ import FocusEntity
 import Combine
 
 struct ModelContentView: View {
+    
+    var arView: ARView
     // App State
     @State private var isPlacementEnabled = true // controls visibility of ModelPickerView and PlacementButtonView
     @State private var selectedModel: Model? // holds selected model (ready for placement)
     @State private var modelConfirmedForPlacement: Model? // holds model confirmed for placement in the scene
+    
+    public init(arView: ARView) {
+        self.arView = arView
+    }
     
     private var models: [Model] = {
         // Dynamically get filenames of USDZ models
@@ -69,7 +76,7 @@ struct ModelContentView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARViewContainer(modelConfirmedForPlacement: $modelConfirmedForPlacement)
+            ARViewContainer(modelConfirmedForPlacement: $modelConfirmedForPlacement, arView: arView)
             
             // If isPlacementEnabled, show PlacementButtonsView, else ModelPickerView
             if self.isPlacementEnabled {
@@ -83,7 +90,24 @@ struct ModelContentView: View {
 
 struct ARViewContainer: UIViewRepresentable {
     @Binding var modelConfirmedForPlacement: Model?
+    var arView: ARView
     
+    func makeUIView(context: Context) -> ARView {
+        let config = ARWorldTrackingConfiguration()
+        config.planeDetection = [.horizontal, .vertical]
+        config.environmentTexturing = .automatic
+        
+        if
+            ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
+            config.sceneReconstruction = .mesh
+        }
+        
+        arView.session.run(config)
+        
+        return arView
+        }
+    
+    /*
     func makeUIView(context: Context) -> ARView {
         
         let arView = CustomARView(frame: .zero)
@@ -102,6 +126,7 @@ struct ARViewContainer: UIViewRepresentable {
         return arView
         
     }
+     */
     
     func updateUIView(_ uiView: ARView, context: Context) {
         if let model = self.modelConfirmedForPlacement {

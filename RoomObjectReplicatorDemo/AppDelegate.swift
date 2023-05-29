@@ -12,7 +12,7 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RoomObjectComponent.registerComponent()
         RoomObjectSystem.registerSystem()
         
-        let contentView = ModelContentView()
+        //let contentView = ModelContentView()
 
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -50,6 +50,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
      */
-     
-
 }
