@@ -5,7 +5,7 @@
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>NSCameraUsageDescription</key>
-    <string>Nous avons besoin de votre permission pour utiliser votre caméra.</string>
+	<string>Nous avons besoin de votre permission pour utiliser votre caméra.</string>
 	<key>Required device capabilities (Item 0 = ARKit)</key>
 	<string></string>
 	<key>UIApplicationSceneManifest</key>

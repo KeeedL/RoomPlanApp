@@ -12,13 +12,15 @@ import UIKit
 import SwiftUI
 import Combine
 
+
 class ViewController: UIViewController, RoomCaptureViewDelegate {
     
 
   @IBOutlet var arView: ARView!
-    let parentView = UIView()
-    var hostingController: UIHostingController<ModelContentView>?
-    //var containerView = ARSCNView()
+    let containerView = UIView()
+    
+    // Définir UIHostingController comme une variable d'instance
+    var host: UIHostingController<ModelContentView>?
 
   var replicator = RoomObjectReplicator()
 
@@ -66,23 +68,28 @@ extension ViewController: RoomCaptureSessionDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
       
+      arView.alpha = 0.7 // 1
       
-      arView.alpha = 1
+      let configuration = ARWorldTrackingConfiguration()
+      arView.session.run(configuration)
+      
+      
       
       roomCaptureView = RoomCaptureView(frame: view.bounds)
-      //roomCaptureView.translatesAutoresizingMaskIntoConstraints = false
-      roomCaptureView.layoutSubviews()
+      roomCaptureView.translatesAutoresizingMaskIntoConstraints = false
+      //roomCaptureView.layoutSubviews()
       roomCaptureView.alpha = 0.7
       roomCaptureView.delegate = self
       roomCaptureView.captureSession.delegate = self
+       
       
       // Create and add ContentView Container
-      let containerView = UIView()
-      //containerView.translatesAutoresizingMaskIntoConstraints = false
+      containerView.translatesAutoresizingMaskIntoConstraints = false
       containerView.addSubview(roomCaptureView)
       arView.addSubview(containerView)
+       
       
-      /*
+      
       NSLayoutConstraint.activate([
           containerView.topAnchor.constraint(equalTo: arView.topAnchor),
           containerView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
@@ -93,37 +100,8 @@ extension ViewController: RoomCaptureSessionDelegate {
           roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
           roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
       ])
-       */
-      
-      //parentView.translatesAutoresizingMaskIntoConstraints = false
-      arView.addSubview(parentView)
-        
-      /*
-        NSLayoutConstraint.activate([
-            parentView.topAnchor.constraint(equalTo: arView.topAnchor),
-            parentView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
-            parentView.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
-            parentView.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
-        ])
-       */
-        
-        //...
-        
-        parentView.addSubview(containerView)
-        
-      /*
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: parentView.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor),
-            roomCaptureView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            roomCaptureView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
-       */
-     
+       
+       
       // start room capture session
       startSession()
   }
@@ -151,26 +129,56 @@ extension ViewController: RoomCaptureSessionDelegate {
     setCompleteNavBar()
   }
     
-    @IBAction func importButton(_ sender: UIBarButtonItem) {
-            print("Import button log")
-
-            let modelContentView = ModelContentView(arView: arView)
-            hostingController = UIHostingController(rootView: modelContentView)
-            
-            if let hostView = hostingController?.view {
-                parentView.addSubview(hostView)
-                
-                // Activate constraints...
-                /*
-                NSLayoutConstraint.activate([
-                        host.view.topAnchor.constraint(equalTo: arView.topAnchor),
-                        host.view.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
-                        host.view.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
-                        host.view.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
-                    ])*/
-            }
-        }
     
+    @IBAction func importButton(_ sender: UIBarButtonItem) {
+        print("Import button log")
+
+        let modelContentView = ModelContentView()
+        host = UIHostingController(rootView: modelContentView)
+        host?.view.translatesAutoresizingMaskIntoConstraints = false
+
+        // Define the hosting view's background color
+        host?.view.backgroundColor = .red
+
+        arView.addSubview(host!.view)
+
+        NSLayoutConstraint.activate([
+            host!.view.topAnchor.constraint(equalTo: arView.topAnchor),
+            host!.view.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
+            host!.view.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
+            host!.view.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
+        ])
+
+        arView.bringSubviewToFront(host!.view)
+    }
+
+
+
+
+    
+    
+    /*@IBAction func importButton(_ sender: UIBarButtonItem) {
+        print("Import button log")
+
+        //let arViewTest = ARView(frame: view.bounds) //FIX: use main ARView rather than create new one
+        let modelContentView = ModelContentView(arView: arView)
+        //modelContentView.foregroundColor(Color.green)
+        let host = UIHostingController(rootView: modelContentView)
+        //host.view.backgroundColor = UIColor(white: 1, alpha: 0) // modifiez la valeur alpha pour changer l'opacité.
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+
+        arView.addSubview(host.view)
+        
+        NSLayoutConstraint.activate([
+                host.view.topAnchor.constraint(equalTo: arView.topAnchor),
+                host.view.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
+                host.view.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
+                host.view.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
+            ])
+        
+         
+    }
+     */
 
 
   @IBAction func doneScanning(_ sender: UIBarButtonItem) {
