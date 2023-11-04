@@ -14,18 +14,14 @@ class ViewController: UIViewController, RoomCaptureViewDelegate {
     
 
   @IBOutlet var arView: ARView!
-    
-    var anchorList: [ARAnchor] = []
 
-  //var captureSession: RoomCaptureSession?
   var replicator = RoomObjectReplicator()
-    var test = 0
 
   @IBOutlet var exportButton: UIButton?
   @IBOutlet var doneButton: UIBarButtonItem?
   @IBOutlet var cancelButton: UIBarButtonItem?
+    @IBOutlet var activityIndicator: UIActivityIndicatorView?
 
-    var containerView = ARSCNView()
     private var roomCaptureView: RoomCaptureView!
   private var isScanning: Bool = false
   private var roomCaptureSessionConfig: RoomCaptureSession.Configuration =
@@ -53,6 +49,7 @@ extension ViewController: RoomCaptureSessionDelegate {
     replicator.anchor(objects: room.objects, in: session)
   }
 
+    
   func captureSession(
     _ session: RoomCaptureSession, didStartWith configuration: RoomCaptureSession.Configuration
   ) {
@@ -60,18 +57,54 @@ extension ViewController: RoomCaptureSessionDelegate {
     arView.session = session.arSession
     arView.session.delegate = self
   }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Set up after loading the view.
+        setupRoomCaptureView()
+        activityIndicator?.stopAnimating()
+    }
 
+    private func setupRoomCaptureView() {
+        if #available(iOS 17.0, *) {
+            let roomCaptureARSession = ARSession()
+            //let configuration = ARWorldTrackingConfiguration()
+            //roomCaptureARSession.run(configuration)
+
+            roomCaptureView = RoomCaptureView(frame: view.bounds, arSession: roomCaptureARSession)
+            roomCaptureView.captureSession.delegate = self
+            roomCaptureView.delegate = self
+            
+            roomCaptureView.alpha = 0.3
+            roomCaptureView.isOpaque = false
+            
+            arView.addSubview(roomCaptureView)
+            
+            NSLayoutConstraint.activate([
+                roomCaptureView.topAnchor.constraint(equalTo: arView.topAnchor),
+                roomCaptureView.leadingAnchor.constraint(equalTo: arView.leadingAnchor),
+                roomCaptureView.trailingAnchor.constraint(equalTo: arView.trailingAnchor),
+                roomCaptureView.bottomAnchor.constraint(equalTo: arView.bottomAnchor)
+            ])
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    /*
     override func viewDidLoad() {
        super.viewDidLoad()
 
          arView.alpha = 1
-
-         roomCaptureView = RoomCaptureView(frame: view.bounds)
-         roomCaptureView.layoutSubviews()
-         roomCaptureView.alpha = 0.7
-         roomCaptureView.delegate = self
-         roomCaptureView.captureSession.delegate = self
-
+        
+        roomCaptureView = RoomCaptureView(frame: view.bounds)
+        roomCaptureView.captureSession.delegate = self
+        roomCaptureView.delegate = self
+        roomCaptureView.alpha = 0.7
+        
+        arView.addSubview(roomCaptureView)
+        
          let containerView = UIView()
          containerView.translatesAutoresizingMaskIntoConstraints = false
          containerView.addSubview(roomCaptureView)
@@ -87,10 +120,15 @@ extension ViewController: RoomCaptureSessionDelegate {
              roomCaptureView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
              roomCaptureView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
          ])
+         
+        
+        activityIndicator?.stopAnimating()
+
 
         // start room capture session
-        startSession()
+        //startSession()
      }
+     */
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -102,44 +140,67 @@ extension ViewController: RoomCaptureSessionDelegate {
     stopSession()
   }
 
-  private func startSession() {
-    isScanning = true
-    roomCaptureView?.captureSession.run(configuration: roomCaptureSessionConfig)
-    setActiveNavBar()
-  }
-
-  private func stopSession() {
-    isScanning = false
-    roomCaptureView?.captureSession?.stop()
-
-    setCompleteNavBar()
-  }
-
-  @IBAction func doneScanning(_ sender: UIBarButtonItem) {
-    if isScanning { stopSession() } else { cancelScanning(sender) }
-  }
-
-  @IBAction func cancelScanning(_ sender: UIBarButtonItem) {
-    navigationController?.dismiss(animated: true)
-  }
-
-  @IBAction func exportResults(_ sender: UIButton) {
-    let destinationURL = FileManager.default.temporaryDirectory.appending(path: "Room.usdz")
-    do {
-      try finalResults?.export(to: destinationURL)
-
-      let activityVC = UIActivityViewController(
-        activityItems: [destinationURL], applicationActivities: nil)
-      activityVC.modalPresentationStyle = .popover
-
-      present(activityVC, animated: true, completion: nil)
-      if let popOver = activityVC.popoverPresentationController {
-        popOver.sourceView = self.exportButton
-      }
-    } catch {
-      print("Error = \(error)")
+    private func startSession() {
+        isScanning = true
+        roomCaptureView?.captureSession.run(configuration: roomCaptureSessionConfig)
+        
+        setActiveNavBar()
     }
-  }
+
+    private func stopSession() {
+        isScanning = false
+        roomCaptureView?.captureSession.stop()
+        
+        setCompleteNavBar()
+    }
+
+    // Decide to post-process and show the final results.
+    func captureView(shouldPresent roomDataForProcessing: CapturedRoomData, error: Error?) -> Bool {
+        return true
+    }
+
+    // Access the final post-processed results.
+    func captureView(didPresent processedResult: CapturedRoom, error: Error?) {
+        finalResults = processedResult
+        self.exportButton?.isEnabled = true
+        self.activityIndicator?.stopAnimating()
+    }
+
+    @IBAction func doneScanning(_ sender: UIBarButtonItem) {
+        if isScanning { stopSession() } else { cancelScanning(sender) }
+        self.exportButton?.isEnabled = false
+        self.activityIndicator?.startAnimating()
+    }
+
+    @IBAction func cancelScanning(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true)
+    }
+
+    // Export the USDZ output by specifying the `.parametric` export option.
+    // Alternatively, `.mesh` exports a nonparametric file and `.all`
+    // exports both in a single USDZ.
+    @IBAction func exportResults(_ sender: UIButton) {
+        let destinationFolderURL = FileManager.default.temporaryDirectory.appending(path: "Export")
+        let destinationURL = destinationFolderURL.appending(path: "Room.usdz")
+        let capturedRoomURL = destinationFolderURL.appending(path: "Room.json")
+        do {
+            try FileManager.default.createDirectory(at: destinationFolderURL, withIntermediateDirectories: true)
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(finalResults)
+            try jsonData.write(to: capturedRoomURL)
+            try finalResults?.export(to: destinationURL, exportOptions: .parametric)
+            
+            let activityVC = UIActivityViewController(activityItems: [destinationFolderURL], applicationActivities: nil)
+            activityVC.modalPresentationStyle = .popover
+            
+            present(activityVC, animated: true, completion: nil)
+            if let popOver = activityVC.popoverPresentationController {
+                popOver.sourceView = self.exportButton
+            }
+        } catch {
+            print("Error = \(error)")
+        }
+    }
 
   private func setActiveNavBar() {
     UIView.animate(
@@ -166,11 +227,11 @@ extension ViewController: RoomCaptureSessionDelegate {
 
 }
 
+
 extension ViewController: ARSessionDelegate {
     
     
   func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-      print("ARSessionDelegate log...")
     arView.scene.addRoomObjectEntities(for: anchors)
   }
 

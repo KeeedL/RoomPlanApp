@@ -4,7 +4,6 @@
 //
 //  Created by Jack Mousseau on 6/6/22.
 //
-
 import ARKit
 import RoomPlan
 
@@ -33,7 +32,7 @@ public class RoomObjectAnchor: ARAnchor {
         roomObjectTransform = anchor.roomObjectTransform
         dimensions = anchor.dimensions
         category = anchor.category
-    
+
         super.init(anchor: anchor)
     }
 

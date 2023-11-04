@@ -52,7 +52,6 @@ public class RoomObjectEntity: Entity, HasAnchoring, HasModel, HasRoomObjectComp
     public init(dimensions: simd_float3, category: CapturedRoom.Object.Category) {
         super.init()
 
-        print("Adding category text")
         let mesh = MeshResource.generateText(String(describing: category),
                                                    extrusionDepth: 0.01,
                                                     font: .init(name: "Helvetica", size: 0.1)!,
@@ -63,7 +62,6 @@ public class RoomObjectEntity: Entity, HasAnchoring, HasModel, HasRoomObjectComp
         let material = SimpleMaterial()
         let model = ModelComponent(mesh: mesh, materials: [material])
         let roomObject = RoomObjectComponent(dimensions: dimensions, category: category)
-        print("zPosition of RoomCaptureView : ")
         components.set([model, roomObject])
     }
     
@@ -110,6 +108,7 @@ public extension Scene {
     }
 
 }
+
 
 public class RoomObjectSystem: System {
 
@@ -167,3 +166,4 @@ public class RoomObjectSystem: System {
     }*/
 
 }
+
