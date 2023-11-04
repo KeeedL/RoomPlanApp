@@ -7,34 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B48D9ED29337BE000F68AA1 /* CustomCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B48D9EC29337BE000F68AA1 /* CustomCaptureView.swift */; };
-		ACEF94B12820AD2300776A9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B02820AD2300776A9D /* AppDelegate.swift */; };
-		ACEF94B32820AD2300776A9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B22820AD2300776A9D /* SceneDelegate.swift */; };
-		ACEF94B52820AD2300776A9D /* RoomCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B42820AD2300776A9D /* RoomCaptureViewController.swift */; };
-		ACEF94B82820AD2300776A9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACEF94B62820AD2300776A9D /* Main.storyboard */; };
-		ACEF94BA2820AD2400776A9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACEF94B92820AD2400776A9D /* Assets.xcassets */; };
-		ACEF94BD2820AD2400776A9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACEF94BB2820AD2400776A9D /* LaunchScreen.storyboard */; };
-		ACEF94C62820AF6600776A9D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94C52820AF6600776A9D /* OnboardingViewController.swift */; };
+		04814F52284FA5B2004DFB85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04814F51284FA5B2004DFB85 /* AppDelegate.swift */; };
+		04814F54284FA5B2004DFB85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04814F53284FA5B2004DFB85 /* ViewController.swift */; };
+		04814F59284FA5B2004DFB85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04814F57284FA5B2004DFB85 /* Main.storyboard */; };
+		04814F5B284FA5B3004DFB85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04814F5A284FA5B3004DFB85 /* Assets.xcassets */; };
+		04814F5E284FA5B3004DFB85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04814F5C284FA5B3004DFB85 /* LaunchScreen.storyboard */; };
+		7B2FA7B72974058100583C45 /* RoomObjectReplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FA7B62974058100583C45 /* RoomObjectReplicator.swift */; };
+		7B2FA7B92974059C00583C45 /* RoomObjectSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FA7B82974059C00583C45 /* RoomObjectSystem.swift */; };
+		7B2FA7BB29743B3300583C45 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FA7BA29743B3300583C45 /* OnboardingViewController.swift */; };
+		7B2FA7BD297444D900583C45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FA7BC297444D900583C45 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05C7567A6B268FC70FFB0FCC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		7B48D9EC29337BE000F68AA1 /* CustomCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCaptureView.swift; sourceTree = "<group>"; };
-		ACEF94AD2820AD2300776A9D /* RoomPlanExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomPlanExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACEF94B02820AD2300776A9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACEF94B22820AD2300776A9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACEF94B42820AD2300776A9D /* RoomCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCaptureViewController.swift; sourceTree = "<group>"; };
-		ACEF94B72820AD2300776A9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ACEF94B92820AD2400776A9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ACEF94BC2820AD2400776A9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ACEF94BE2820AD2400776A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACEF94C52820AF6600776A9D /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		CD4891E2C9F3F7012DE25B49 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		04814F4E284FA5B2004DFB85 /* RoomObjectReplicatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomObjectReplicatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04814F51284FA5B2004DFB85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04814F53284FA5B2004DFB85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04814F58284FA5B2004DFB85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04814F5A284FA5B3004DFB85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04814F5D284FA5B3004DFB85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B2FA7B62974058100583C45 /* RoomObjectReplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomObjectReplicator.swift; sourceTree = "<group>"; };
+		7B2FA7B82974059C00583C45 /* RoomObjectSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomObjectSystem.swift; sourceTree = "<group>"; };
+		7B2FA7BA29743B3300583C45 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		7B2FA7BC297444D900583C45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7BEBA2D4297BFC53003ECA18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ACEF94AA2820AD2300776A9D /* Frameworks */ = {
+		04814F4B284FA5B2004DFB85 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,94 +43,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0ED4ADFE8897242ABECFB073 /* Configuration */ = {
+		04814F45284FA5B2004DFB85 = {
 			isa = PBXGroup;
 			children = (
-				35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */,
-			);
-			name = Configuration;
-			sourceTree = "<group>";
-		};
-		ACEF94A42820AD2300776A9D = {
-			isa = PBXGroup;
-			children = (
-				05C7567A6B268FC70FFB0FCC /* README.md */,
-				ACEF94AF2820AD2300776A9D /* RoomPlanExampleApp */,
-				ACEF94AE2820AD2300776A9D /* Products */,
-				0ED4ADFE8897242ABECFB073 /* Configuration */,
-				C4CB873CC14D1C6A55335C8A /* LICENSE */,
+				04814F50284FA5B2004DFB85 /* RoomObjectReplicatorDemo */,
+				04814F4F284FA5B2004DFB85 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		ACEF94AE2820AD2300776A9D /* Products */ = {
+		04814F4F284FA5B2004DFB85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ACEF94AD2820AD2300776A9D /* RoomPlanExampleApp.app */,
+				04814F4E284FA5B2004DFB85 /* RoomObjectReplicatorDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ACEF94AF2820AD2300776A9D /* RoomPlanExampleApp */ = {
+		04814F50284FA5B2004DFB85 /* RoomObjectReplicatorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				ACEF94B02820AD2300776A9D /* AppDelegate.swift */,
-				ACEF94B22820AD2300776A9D /* SceneDelegate.swift */,
-				ACEF94C52820AF6600776A9D /* OnboardingViewController.swift */,
-				ACEF94B42820AD2300776A9D /* RoomCaptureViewController.swift */,
-				ACEF94B62820AD2300776A9D /* Main.storyboard */,
-				ACEF94B92820AD2400776A9D /* Assets.xcassets */,
-				ACEF94BB2820AD2400776A9D /* LaunchScreen.storyboard */,
-				ACEF94BE2820AD2400776A9D /* Info.plist */,
-				7B48D9EC29337BE000F68AA1 /* CustomCaptureView.swift */,
+				04814F51284FA5B2004DFB85 /* AppDelegate.swift */,
+				04814F53284FA5B2004DFB85 /* ViewController.swift */,
+				04814F57284FA5B2004DFB85 /* Main.storyboard */,
+				04814F5A284FA5B3004DFB85 /* Assets.xcassets */,
+				04814F5C284FA5B3004DFB85 /* LaunchScreen.storyboard */,
+				7B2FA7B62974058100583C45 /* RoomObjectReplicator.swift */,
+				7B2FA7B82974059C00583C45 /* RoomObjectSystem.swift */,
+				7B2FA7BA29743B3300583C45 /* OnboardingViewController.swift */,
+				7B2FA7BC297444D900583C45 /* SceneDelegate.swift */,
+				7BEBA2D4297BFC53003ECA18 /* Info.plist */,
 			);
-			path = RoomPlanExampleApp;
-			sourceTree = "<group>";
-		};
-		C4CB873CC14D1C6A55335C8A /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				CD4891E2C9F3F7012DE25B49 /* LICENSE.txt */,
-			);
-			path = LICENSE;
+			path = RoomObjectReplicatorDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ACEF94AC2820AD2300776A9D /* RoomPlanExampleApp */ = {
+		04814F4D284FA5B2004DFB85 /* RoomObjectReplicatorDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACEF94C12820AD2400776A9D /* Build configuration list for PBXNativeTarget "RoomPlanExampleApp" */;
+			buildConfigurationList = 04814F61284FA5B3004DFB85 /* Build configuration list for PBXNativeTarget "RoomObjectReplicatorDemo" */;
 			buildPhases = (
-				ACEF94A92820AD2300776A9D /* Sources */,
-				ACEF94AA2820AD2300776A9D /* Frameworks */,
-				ACEF94AB2820AD2300776A9D /* Resources */,
+				04814F4A284FA5B2004DFB85 /* Sources */,
+				04814F4B284FA5B2004DFB85 /* Frameworks */,
+				04814F4C284FA5B2004DFB85 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RoomPlanExampleApp;
-			productName = RoomPlanExampleApp;
-			productReference = ACEF94AD2820AD2300776A9D /* RoomPlanExampleApp.app */;
+			name = RoomObjectReplicatorDemo;
+			packageProductDependencies = (
+			);
+			productName = RoomObjectReplicatorDemo;
+			productReference = 04814F4E284FA5B2004DFB85 /* RoomObjectReplicatorDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		ACEF94A52820AD2300776A9D /* Project object */ = {
+		04814F46284FA5B2004DFB85 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
-				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
-					ACEF94AC2820AD2300776A9D = {
+					04814F4D284FA5B2004DFB85 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
-			buildConfigurationList = ACEF94A82820AD2300776A9D /* Build configuration list for PBXProject "RoomPlanExampleApp" */;
+			buildConfigurationList = 04814F49284FA5B2004DFB85 /* Build configuration list for PBXProject "RoomObjectReplicatorDemo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,57 +121,61 @@
 				en,
 				Base,
 			);
-			mainGroup = ACEF94A42820AD2300776A9D;
-			productRefGroup = ACEF94AE2820AD2300776A9D /* Products */;
+			mainGroup = 04814F45284FA5B2004DFB85;
+			packageReferences = (
+				04814F64284FA63A004DFB85 /* XCRemoteSwiftPackageReference "RoomObjectReplicator" */,
+			);
+			productRefGroup = 04814F4F284FA5B2004DFB85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ACEF94AC2820AD2300776A9D /* RoomPlanExampleApp */,
+				04814F4D284FA5B2004DFB85 /* RoomObjectReplicatorDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ACEF94AB2820AD2300776A9D /* Resources */ = {
+		04814F4C284FA5B2004DFB85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEF94BD2820AD2400776A9D /* LaunchScreen.storyboard in Resources */,
-				ACEF94BA2820AD2400776A9D /* Assets.xcassets in Resources */,
-				ACEF94B82820AD2300776A9D /* Main.storyboard in Resources */,
+				04814F5E284FA5B3004DFB85 /* LaunchScreen.storyboard in Resources */,
+				04814F5B284FA5B3004DFB85 /* Assets.xcassets in Resources */,
+				04814F59284FA5B2004DFB85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		ACEF94A92820AD2300776A9D /* Sources */ = {
+		04814F4A284FA5B2004DFB85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEF94B52820AD2300776A9D /* RoomCaptureViewController.swift in Sources */,
-				ACEF94B12820AD2300776A9D /* AppDelegate.swift in Sources */,
-				7B48D9ED29337BE000F68AA1 /* CustomCaptureView.swift in Sources */,
-				ACEF94B32820AD2300776A9D /* SceneDelegate.swift in Sources */,
-				ACEF94C62820AF6600776A9D /* OnboardingViewController.swift in Sources */,
+				7B2FA7B72974058100583C45 /* RoomObjectReplicator.swift in Sources */,
+				04814F54284FA5B2004DFB85 /* ViewController.swift in Sources */,
+				7B2FA7BB29743B3300583C45 /* OnboardingViewController.swift in Sources */,
+				7B2FA7B92974059C00583C45 /* RoomObjectSystem.swift in Sources */,
+				04814F52284FA5B2004DFB85 /* AppDelegate.swift in Sources */,
+				7B2FA7BD297444D900583C45 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ACEF94B62820AD2300776A9D /* Main.storyboard */ = {
+		04814F57284FA5B2004DFB85 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ACEF94B72820AD2300776A9D /* Base */,
+				04814F58284FA5B2004DFB85 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		ACEF94BB2820AD2400776A9D /* LaunchScreen.storyboard */ = {
+		04814F5C284FA5B3004DFB85 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ACEF94BC2820AD2400776A9D /* Base */,
+				04814F5D284FA5B3004DFB85 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -197,9 +183,8 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		ACEF94BF2820AD2400776A9D /* Debug */ = {
+		04814F5F284FA5B3004DFB85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -258,9 +243,8 @@
 			};
 			name = Debug;
 		};
-		ACEF94C02820AD2400776A9D /* Release */ = {
+		04814F60284FA5B3004DFB85 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -313,22 +297,23 @@
 			};
 			name = Release;
 		};
-		ACEF94C22820AD2400776A9D /* Debug */ = {
+		04814F62284FA5B3004DFB85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q4F2J56TBZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RoomPlanExampleApp/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "RoomCaptureView Requires Camera Access";
+				INFOPLIST_KEY_CFBundleDisplayName = CustHome;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -336,32 +321,31 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.RoomPlanExampleApp${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gbocquet.RoomObjectReplicatorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		ACEF94C32820AD2400776A9D /* Release */ = {
+		04814F63284FA5B3004DFB85 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q4F2J56TBZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RoomPlanExampleApp/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "RoomCaptureView Requires Camera Access";
+				INFOPLIST_KEY_CFBundleDisplayName = CustHome;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -369,10 +353,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.RoomPlanExampleApp${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmousseau.RoomObjectReplicatorDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,25 +364,36 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ACEF94A82820AD2300776A9D /* Build configuration list for PBXProject "RoomPlanExampleApp" */ = {
+		04814F49284FA5B2004DFB85 /* Build configuration list for PBXProject "RoomObjectReplicatorDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ACEF94BF2820AD2400776A9D /* Debug */,
-				ACEF94C02820AD2400776A9D /* Release */,
+				04814F5F284FA5B3004DFB85 /* Debug */,
+				04814F60284FA5B3004DFB85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACEF94C12820AD2400776A9D /* Build configuration list for PBXNativeTarget "RoomPlanExampleApp" */ = {
+		04814F61284FA5B3004DFB85 /* Build configuration list for PBXNativeTarget "RoomObjectReplicatorDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ACEF94C22820AD2400776A9D /* Debug */,
-				ACEF94C32820AD2400776A9D /* Release */,
+				04814F62284FA5B3004DFB85 /* Debug */,
+				04814F63284FA5B3004DFB85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04814F64284FA63A004DFB85 /* XCRemoteSwiftPackageReference "RoomObjectReplicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jmousseau/RoomObjectReplicator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
-	rootObject = ACEF94A52820AD2300776A9D /* Project object */;
+	rootObject = 04814F46284FA5B2004DFB85 /* Project object */;
 }

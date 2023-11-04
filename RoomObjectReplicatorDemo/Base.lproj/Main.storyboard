@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21503.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jcw-wB-BJ5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21501.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="9iw-i3-W55">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jcw-wB-BJ5" customClass="OnboardingViewController" customModule="RoomObjectReplicatorDemo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="47Z-Cx-ixd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99j-0Q-YfL">
+                                <rect key="frame" x="1" y="234" width="412" height="130.5"/>
+                                <string key="text">To scan your room, point your device at all the walls, windows, doors and furniture in your space until your scan is complete.
+
+You can see a preview of your scan at the bottom of the screen so you can make sure your scan is correct. </string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RoomPlan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbK-Qa-RvN">
+                                <rect key="frame" x="126.5" y="178" width="161" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="Lad-LC-y9O">
+                                <rect key="frame" x="107" y="779" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="D9Z-ZL-Je9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Mmr-lf-eeb"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Start Scanning" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background"/>
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="startScan:" destination="Jcw-wB-BJ5" eventType="touchUpInside" id="8lm-Xk-5Uh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="abJ-bj-DfK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="99j-0Q-YfL" firstAttribute="top" secondItem="MbK-Qa-RvN" secondAttribute="bottom" constant="15" id="2gK-W9-ZYN"/>
+                            <constraint firstItem="99j-0Q-YfL" firstAttribute="centerX" secondItem="47Z-Cx-ixd" secondAttribute="centerX" id="3UT-Hh-bYu"/>
+                            <constraint firstItem="99j-0Q-YfL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="47Z-Cx-ixd" secondAttribute="leading" id="3h6-uk-qUg"/>
+                            <constraint firstItem="MbK-Qa-RvN" firstAttribute="centerX" secondItem="47Z-Cx-ixd" secondAttribute="centerX" id="9ur-cN-JCJ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="99j-0Q-YfL" secondAttribute="trailing" id="e01-xZ-KhH"/>
+                            <constraint firstItem="MbK-Qa-RvN" firstAttribute="top" secondItem="abJ-bj-DfK" secondAttribute="top" constant="130" id="kkP-0X-5LD"/>
+                            <constraint firstItem="abJ-bj-DfK" firstAttribute="bottom" secondItem="Lad-LC-y9O" secondAttribute="bottom" constant="33" id="rVE-OF-iEW"/>
+                            <constraint firstItem="Lad-LC-y9O" firstAttribute="centerX" secondItem="47Z-Cx-ixd" secondAttribute="centerX" id="zh5-5g-cMm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayl-i6-Qii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1593" y="133"/>
+        </scene>
+        <!--ARView-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="ARView" customClass="ViewController" customModule="RoomObjectReplicatorDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <arView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </arView>
+                    <navigationItem key="navigationItem" id="wo6-zb-Y3e">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="gqL-fm-Q95">
+                            <connections>
+                                <action selector="cancelScanning:" destination="BYZ-38-t0r" id="c3J-LS-bwr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="8XX-aF-xH3">
+                            <connections>
+                                <action selector="doneScanning:" destination="BYZ-38-t0r" id="5DC-Cr-dy2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="arView" destination="8bC-Xf-vdC" id="TPV-4x-avp"/>
+                        <outlet property="cancelButton" destination="gqL-fm-Q95" id="Tnz-QY-cZv"/>
+                        <outlet property="doneButton" destination="8XX-aF-xH3" id="fOD-7a-eAx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LhI-Om-hcH">
+            <objects>
+                <navigationController storyboardIdentifier="RoomCaptureViewNavigationController" id="isa-ZA-V4h" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ndk-2s-Lz8">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="oPX-KX-1Ku"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8k5-yR-Dh2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-820" y="133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
