@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        RoomObjectComponent.registerComponent()
-        RoomObjectSystem.registerSystem()
         return true
     }
 

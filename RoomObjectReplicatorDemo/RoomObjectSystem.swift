@@ -119,7 +119,7 @@ public class RoomObjectSystem: System {
     }
 
     // TODO: update position, category...
-    /*
+    
     public func update(context: SceneUpdateContext) {
         
         
@@ -138,9 +138,7 @@ public class RoomObjectSystem: System {
             //entity.model?.materials = [material(for: roomObject.category)]
         }
     }
-     */
-
-    /*
+     
     private func material(for category: CapturedRoom.Object.Category) -> SimpleMaterial {
         let roughness = MaterialScalarParameter(floatLiteral: 0.27)
         switch category {
@@ -163,7 +161,7 @@ public class RoomObjectSystem: System {
         @unknown default:
             fatalError()
         }
-    }*/
+    }
 
 }
 
