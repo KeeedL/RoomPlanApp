@@ -45,7 +45,7 @@ class ViewController: UIViewController, RoomCaptureViewDelegate {
             roomCaptureView.delegate = self
             
             roomCaptureView.alpha = 0.4
-            roomCaptureView.isOpaque = false
+            roomCaptureView.isOpaque = true
             
             arView.addSubview(roomCaptureView)
             
